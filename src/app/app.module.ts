@@ -11,8 +11,9 @@ import { PostService } from './post/post.service';
 import { PostListComponent } from './post/post-list/post-list.component';
 
 const routes: Routes = [
-    { path: 'post-list', component: PostListComponent },
-  { path: 'postlist/:id', component: PostDetailComponent },
+  { path: '', redirectTo: '/post-list', pathMatch: 'full' },
+  { path: 'post-list', component: PostListComponent },
+  { path: 'post-detail/:id', component: PostDetailComponent },
 
 ];
 export const routing = RouterModule.forRoot(routes);
