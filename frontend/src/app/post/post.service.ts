@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { POSTS } from './mock-posts';
-import { Post } from './post';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PostService {
-
-  constructor() { }
+  API_URL = 'http://127.0.0.1:8000/';
+  constructor(private http: Http) { }
   getPosts() {
-    return Promise.resolve(POSTS);
+    return this.http.get(this.API_URL + 'posts').map(res => res.json());
   }
-  getPost(id: number): Promise<Post> {
-    return this.getPosts().then(posts => posts.find(post => post.id === id) );
+  getPost(id: number) {
+    return this.getPosts().map(posts => posts.find(post => post.id === id) );
+    }
+  addPost(data) {
+    return this.http.post(this.API_URL + 'posts/', data).map(res => res.json());
   }
 
 }

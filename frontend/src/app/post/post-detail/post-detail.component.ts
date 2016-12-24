@@ -12,7 +12,7 @@ import { Post } from '../post';
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit {
-  post: Post;
+  post: any;
   constructor(private route: ActivatedRoute,
               private p: PostService,
               private location: Location) { }
