@@ -30,7 +30,7 @@ export class UserLoginComponent implements OnInit {
     console.log(this.loginForm.value);
     let ok = this.userService.login(this.loginForm.value);
     console.log(ok);
-    ok.subscribe(data => console.log(data));
+  //  ok.subscribe(data => console.log(data));
   }
 
 }

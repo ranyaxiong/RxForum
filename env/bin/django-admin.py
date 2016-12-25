@@ -1,4 +1,4 @@
-#!/home/yaxiong/angular/forum/env/bin/python3
+#!/home/yaxiong/angular/raincat/env/bin/python3
 from django.core import management
 
 if __name__ == "__main__":

@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework_jwt.views import obtain_jwt_token
 from forum import views
 
 urlpatterns = [
@@ -24,5 +25,7 @@ urlpatterns = [
     url(r'^posts/(?P<pk>[0-9]+)/$', views.PostDetail.as_view()),
     url(r'^users/$', views.UserList.as_view()),
     url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
+    url(r'^login/$', views.LoginView.as_view()),
+    url(r'^api-token-auth/', obtain_jwt_token),
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

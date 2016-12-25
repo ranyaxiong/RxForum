@@ -15,6 +15,20 @@ import { UserService } from './user/user.service';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { AddPostComponent } from './post/add-post/add-post.component';
 
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { AuthHttp, AuthConfig } from 'angular2-jwt';
+import { provideAuth } from 'angular2-jwt';
+import { Http, RequestOptions } from '@angular/http';
+
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp(new AuthConfig({
+          tokenName: 'id_token',
+          tokenGetter: (() => localStorage.getItem('id_token')),
+          globalHeaders: [{'Content-Type':'application/json'}],
+          headerPrefix: 'JWT',
+     }), http, options);
+}
+
 const routes: Routes = [
   { path: '', redirectTo: '/post-list', pathMatch: 'full' },
   { path: 'post-list', component: PostListComponent },
@@ -43,7 +57,13 @@ export const routing = RouterModule.forRoot(routes);
     HttpModule,
     routing,
     ],
-  providers: [PostService, UserService],
+  providers: [PostService, UserService,
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [Http, RequestOptions]
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

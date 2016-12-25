@@ -130,3 +130,11 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'forum.User'
 # config for django cors headers
 CORS_ORIGIN_WHITELIST = ('localhost:4200',)
+
+REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+            'rest_framework.authentication.BasicAuthentication',
+            'rest_framework.authentication.SessionAuthentication',
+            'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+            )
+        }
