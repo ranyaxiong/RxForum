@@ -12,33 +12,29 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserService } from './user/user.service';
+import { AuthenticationService } from './user/authentication.service';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { AddPostComponent } from './post/add-post/add-post.component';
 
-import { AUTH_PROVIDERS } from 'angular2-jwt';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
-import { provideAuth } from 'angular2-jwt';
 import { Http, RequestOptions } from '@angular/http';
+
+import { Configuration } from './app.constants';
+import { HomeComponent } from './home/home.component';
+
+import { AppRoutingModule } from './app-routing.moudule'
+
+//import { MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS } from 'ng2-material/';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
           tokenName: 'id_token',
           tokenGetter: (() => localStorage.getItem('id_token')),
-          globalHeaders: [{'Content-Type':'application/json'}],
+          globalHeaders: [{'Content-Type': 'application/json'}],
           headerPrefix: 'JWT',
      }), http, options);
 }
 
-const routes: Routes = [
-  { path: '', redirectTo: '/post-list', pathMatch: 'full' },
-  { path: 'post-list', component: PostListComponent },
-  { path: 'post-detail/:id', component: PostDetailComponent },
-  { path: 'register', component: UserRegisterComponent },
-  { path: 'login', component: UserLoginComponent },
-  { path: 'add-post', component: AddPostComponent },
-
-];
-export const routing = RouterModule.forRoot(routes);
 
 @NgModule({
   declarations: [
@@ -48,16 +44,19 @@ export const routing = RouterModule.forRoot(routes);
     UsersComponent,
     UserRegisterComponent,
     UserLoginComponent,
-    AddPostComponent
-  ],
+    AddPostComponent,
+    HomeComponent,
+     ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    routing,
-    ],
+    AppRoutingModule,
+       ],
   providers: [PostService, UserService,
+   Configuration,
+   AuthenticationService,
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,

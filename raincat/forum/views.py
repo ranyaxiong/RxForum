@@ -11,7 +11,6 @@ from rest_framework.permissions import IsAuthenticated
 
 
 class PostList(generics.ListCreateAPIView):
-    permission_classes = (IsAuthenticated,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     def perform_create(self, serializer):

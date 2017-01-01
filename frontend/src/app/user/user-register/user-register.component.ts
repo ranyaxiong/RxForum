@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { UserService } from '../user.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-user-register',
@@ -13,7 +13,7 @@ export class UserRegisterComponent implements OnInit {
   password: FormControl;
   email: FormControl;
 
-  constructor(private builder: FormBuilder, private userService: UserService) {
+  constructor(private builder: FormBuilder, private authService: AuthenticationService) {
     this.username = new FormControl('', []);
     this.password = new FormControl('', []);
     this.email = new FormControl('', []);
@@ -28,7 +28,7 @@ export class UserRegisterComponent implements OnInit {
   }
   register() {
     console.log(this.registerForm.value);
-    let ok = this.userService.register(this.registerForm.value);
+    let ok = this.authService.register(this.registerForm.value);
     console.log(ok);
     ok.subscribe(data => console.log(data));
   }

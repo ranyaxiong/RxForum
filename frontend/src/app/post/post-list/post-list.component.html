@@ -1,5 +1,7 @@
-<div *ngFor="let post of postList">
+<div class="ui grid">
+<div *ngFor="let post of postList" class="sixteen wide column">
   <a [routerLink]="['/post-detail', post.id]"><h3>{{ post.title }}</h3></a>
   <p>{{ post.author.username }}<p>
+</div>
 </div>
 

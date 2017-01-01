@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { UserService } from '../user.service';
+import {  AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-user-login',
@@ -13,7 +13,7 @@ export class UserLoginComponent implements OnInit {
   password: FormControl;
   email: FormControl;
 
-  constructor(private builder: FormBuilder, private userService: UserService) {
+  constructor(private builder: FormBuilder, private authService: AuthenticationService) {
     this.username = new FormControl('', []);
     this.password = new FormControl('', []);
     this.email = new FormControl('', []);
@@ -28,7 +28,7 @@ export class UserLoginComponent implements OnInit {
   }
   login() {
     console.log(this.loginForm.value);
-    let ok = this.userService.login(this.loginForm.value);
+    let ok = this.authService.login(this.loginForm.value);
     console.log(ok);
   //  ok.subscribe(data => console.log(data));
   }
