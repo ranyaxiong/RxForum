@@ -23,11 +23,10 @@ import { HomeComponent } from './home/home.component';
 const appRoutes: Routes = [
  // { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
 //  { path: 'post-list', component: PostListComponent, outlet: 'postList' },
   { path: 'post-list', component: PostListComponent, outlet: 'postList' },
   { path: 'post-detail/:id', component: PostDetailComponent },
-  { path: 'register', component: UserRegisterComponent, outlet: 'postList' },
+  { path: 'register', component: UserRegisterComponent },
   { path: 'login', component: UserLoginComponent },
   { path: 'add-post', component: AddPostComponent },
 
