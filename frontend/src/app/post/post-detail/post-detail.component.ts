@@ -4,7 +4,6 @@ import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
 import { PostService } from '../post.service';
-import { Post } from '../post';
 
 @Component({
   selector: 'app-post-detail',
@@ -20,7 +19,7 @@ export class PostDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params
     .switchMap((params: Params) => this.p.getPost(+params['id']))
-    .subscribe(post => this.post = post);
-  }
+    .subscribe(post => {this.post = post; console.log(this.post); });
+       }
 
 }

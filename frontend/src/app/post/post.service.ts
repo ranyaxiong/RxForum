@@ -17,7 +17,8 @@ export class PostService {
     return this.http.get(this.actionUrl).map(res => res.json());
   }
   getPost(id: number) {
-    return this.getPosts().map(posts => posts.find(post => post.id === id) );
+   // return this.getPosts().map(posts => posts.find(post => post.id === id) ); 
+    return this.http.get(this.actionUrl + String(id) + '/').map(res => res.json());
     }
   addPost(data) {
     console.log(localStorage.getItem('id_token'));
