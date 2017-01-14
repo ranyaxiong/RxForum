@@ -4,6 +4,7 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Configuration } from '../app.constants';
 
 import { AuthHttp } from 'angular2-jwt';
+import { tokenNotExpired } from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
@@ -39,6 +40,9 @@ export class AuthenticationService {
 
   logout() {
     localStorage.removeItem('id_token');
+  }
+  authenticated() {
+    return tokenNotExpired();
   }
   getAuthToken(data) {
     console.log('getAuthToken is called');
