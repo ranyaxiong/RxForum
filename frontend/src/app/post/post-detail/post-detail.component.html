@@ -1,3 +1,14 @@
-<div class="ui container">
-<p *ngIf="post">{{ post.content }}</p>
+<div *ngIf="post" class="ui container">
+  <h3>{{ post.title }}</h3>
+  {{ post.content }}
+  <br>
+  <form class="ui reply form">
+    <div class="field">
+        <textarea></textarea>
+    </div>
+    <div class="ui primary submit labeld icon button">
+        <i class="icon edit"></i>Add comment
+    </div>
+  </form>
+  <app-comment></app-comment>
 </div>

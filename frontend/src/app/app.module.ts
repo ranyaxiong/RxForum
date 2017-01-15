@@ -22,7 +22,8 @@ import { Http, RequestOptions } from '@angular/http';
 import { Configuration } from './app.constants';
 import { HomeComponent } from './home/home.component';
 
-import { AppRoutingModule } from './app-routing.moudule'
+import { AppRoutingModule } from './app-routing.moudule';
+import { CommentComponent } from './comment/comment.component'
 
 //import { MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS } from 'ng2-material/';
 
@@ -46,6 +47,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     UserLoginComponent,
     AddPostComponent,
     HomeComponent,
+    CommentComponent,
      ],
   imports: [
     BrowserModule,
