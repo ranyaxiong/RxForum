@@ -1,13 +1,24 @@
 import json
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-from forum.models import Post, User
-from forum.serializers import PostSerializer, UserSerializer
+from forum.models import Post, User, Comment
+from forum.serializers import PostSerializer, UserSerializer, CommentSerializer
 from rest_framework import generics, status, views
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 #from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 #from rest_framework.permissions import IsAuthenticated
+
+class CommentList(generics.ListCreateAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
+
+class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
 
 
 class PostList(generics.ListCreateAPIView):

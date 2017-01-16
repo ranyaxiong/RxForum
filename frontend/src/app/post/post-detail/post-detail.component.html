@@ -2,13 +2,6 @@
   <h3>{{ post.title }}</h3>
   {{ post.content }}
   <br>
-  <form class="ui reply form">
-    <div class="field">
-        <textarea></textarea>
-    </div>
-    <div class="ui primary submit labeld icon button">
-        <i class="icon edit"></i>Add comment
-    </div>
-  </form>
-  <app-comment></app-comment>
+ <app-comment [post]="post"></app-comment>
+ <app-add-comment [post]="post"></app-add-comment>
 </div>

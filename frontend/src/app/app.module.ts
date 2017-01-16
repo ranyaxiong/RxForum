@@ -23,7 +23,9 @@ import { Configuration } from './app.constants';
 import { HomeComponent } from './home/home.component';
 
 import { AppRoutingModule } from './app-routing.moudule';
-import { CommentComponent } from './comment/comment.component'
+import { CommentComponent } from './comment/comment.component';
+import { CommentService } from './comment/comment.service';
+import { AddCommentComponent } from './post/post-detail/add-comment/add-comment.component';
 
 //import { MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS } from 'ng2-material/';
 
@@ -48,6 +50,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     AddPostComponent,
     HomeComponent,
     CommentComponent,
+    AddCommentComponent,
      ],
   imports: [
     BrowserModule,
@@ -56,7 +59,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HttpModule,
     AppRoutingModule,
        ],
-  providers: [PostService, UserService,
+  providers: [PostService, 
+   UserService,
+   CommentService,
    Configuration,
    AuthenticationService,
     {

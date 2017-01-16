@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^api/v1/posts/(?P<pk>[0-9]+)/$', views.PostDetail.as_view()),
     url(r'^api/v1/users/$', views.UserList.as_view()),
     url(r'^api/v1/users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
+    url(r'^api/v1/comments/$', views.CommentList.as_view()),
+    url(r'^api/v1/comments/(?P<pk>[0-9]+)/$', views.CommentDetail.as_view()),
     url(r'^login/$', views.LoginView.as_view()),
     url(r'^api-token-auth/', obtain_jwt_token),
 ]

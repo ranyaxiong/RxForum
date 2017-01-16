@@ -1,0 +1,18 @@
+<div class="ui container">
+<!--
+<form class="ui reply form">
+  <div class="field">
+      <textarea #content></textarea>
+  </div>
+  <div class="ui primary submit labeld icon button" (click)="addComment(content.value)">
+      <i class="icon edit"></i>Add comment
+  </div>
+  <button class="ui button" (click)="addComment(content.value)">发表评论</button><tab>
+</form>
+-->
+  <form #addCommentForm="ngForm" (ngSubmit)="addComment(addCommentForm)">
+    <label for="content">评论</label>
+    <textarea name="content" id="content" ngModel></textarea>
+    <button class="ui button" type=submit>发表</button>
+  </form>
+</div>
