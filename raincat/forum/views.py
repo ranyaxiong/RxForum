@@ -10,11 +10,22 @@ from rest_framework.permissions import IsAuthenticated
 #from rest_framework.permissions import IsAuthenticated
 
 class CommentList(generics.ListCreateAPIView):
+    print("here is comment view")
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     def perform_create(self, serializer):
+        print('CommentList view: ' + self.request.user)
         serializer.save(author=self.request.user)
-
+'''
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
+        author = request.data.get('author')
+        author = User.objects.get(username=author)
+        content = request.data.get('content')
+        instance = Comment(author=author, content=content)
+        instance.save()
+        return Response(serializer.validated_data)
+'''
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()

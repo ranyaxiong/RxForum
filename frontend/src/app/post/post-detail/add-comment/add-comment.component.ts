@@ -17,8 +17,13 @@ export class AddCommentComponent implements OnInit {
 
   ngOnInit() {
   }
-  addComment(post= this.post, form: NgForm) {
-     this.http.post(this.actionUrl, Object.assign(form.value, {post: post})).map(res => res.json()).subscribe(comment => console.log(comment));
+  addComment(form: NgForm) {
+    console.log(form.value);
+    let data = Object.assign(form.value, {post: this.post, author: localStorage.getItem('currentUser')} );
+    console.log(data);
+     this.http.post(this.actionUrl, data)
+     .map(res => res.json()).subscribe(comment => console.log(comment));
+
   }
 
 }

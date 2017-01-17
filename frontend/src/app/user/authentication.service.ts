@@ -31,6 +31,7 @@ export class AuthenticationService {
       if (token) {
         console.log(token);
         localStorage.setItem('id_token', token);
+        localStorage.setItem('currentUser', data.username);
         console.log('get token success');
       } else {
         console.log('get token failed');
