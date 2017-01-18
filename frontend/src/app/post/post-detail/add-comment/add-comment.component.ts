@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Http } from '@angular/http';
 import { NgForm } from '@angular/forms';
 import {Configuration } from '../../../app.constants';
+import { AuthHttp } from 'angular2-jwt';
 
 @Component({
   selector: 'app-add-comment',
@@ -11,7 +12,7 @@ import {Configuration } from '../../../app.constants';
 export class AddCommentComponent implements OnInit {
   @Input() post: any;
   actionUrl: string;
-  constructor(private http: Http, configuration: Configuration) {
+  constructor(private authHttp: AuthHttp, configuration: Configuration) {
     this.actionUrl = configuration.API_URL + 'comments/';
    }
 
@@ -19,9 +20,9 @@ export class AddCommentComponent implements OnInit {
   }
   addComment(form: NgForm) {
     console.log(form.value);
-    let data = Object.assign(form.value, {post: this.post, author: localStorage.getItem('currentUser')} );
+    let data = Object.assign(form.value, {post: this.post.id, author: localStorage.getItem('currentUser')});
     console.log(data);
-     this.http.post(this.actionUrl, data)
+     this.authHttp.post(this.actionUrl, data)
      .map(res => res.json()).subscribe(comment => console.log(comment));
 
   }

@@ -10,21 +10,27 @@ from rest_framework.permissions import IsAuthenticated
 #from rest_framework.permissions import IsAuthenticated
 
 class CommentList(generics.ListCreateAPIView):
-    print("here is comment view")
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+
     def perform_create(self, serializer):
-        print('CommentList view: ' + self.request.user)
-        serializer.save(author=self.request.user)
+        post_id = self.request.data.get('post')
+        post = Post.objects.get(pk=post_id)
+        print('The self.request.user is: ', self.request.user)
+        serializer.save(author=self.request.user, article=post)
 '''
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
-        author = request.data.get('author')
-        author = User.objects.get(username=author)
+        author_name = request.data.get('author')
+        author = User.objects.get(username=author_name)
+        article_id  = request.data.get('post')
+        article = Post.objects.get(pk=article_id)
         content = request.data.get('content')
-        instance = Comment(author=author, content=content)
+        print('show some imformation about content data and article')
+        print(content, article)
+        instance = Comment(author=author, content=content, article=article)
         instance.save()
-        return Response(serializer.validated_data)
+        return Response(serializer.initial_data)
 '''
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -36,7 +42,7 @@ class PostList(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     def perform_create(self, serializer):
-        print("This is request.user", self.request.user)
+        print("This is the type of request.user", type(self.request.user))
         print("This is request._request.user", self.request._request.user)
         serializer.save(author=self.request.user)
 
@@ -50,6 +56,7 @@ class UserList(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    lookup_field = 'username'
 
     def create(self, request):
 
