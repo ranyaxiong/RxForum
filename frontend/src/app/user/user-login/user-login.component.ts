@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import {  AuthenticationService } from '../authentication.service';
+import {  AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-user-login',
@@ -14,7 +14,7 @@ export class UserLoginComponent implements OnInit {
   password: FormControl;
   email: FormControl;
 
-  constructor(private builder: FormBuilder, private authService: AuthenticationService, private router: Router) {
+  constructor(private builder: FormBuilder, private authService: AuthService, private router: Router) {
     this.username = new FormControl('', []);
     this.password = new FormControl('', []);
     this.email = new FormControl('', []);
@@ -31,7 +31,7 @@ export class UserLoginComponent implements OnInit {
     console.log(this.loginForm.value);
     let ok = this.authService.login(this.loginForm.value);
     console.log(ok);
-    if(localStorage.getItem('id_token')) {
+    if (localStorage.getItem('id_token')) {
       this.router.navigate(['/']);
     }
   //  ok.subscribe(data => console.log(data));

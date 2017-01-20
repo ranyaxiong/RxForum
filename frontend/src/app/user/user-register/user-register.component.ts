@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { AuthenticationService } from '../authentication.service';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'app-user-register',
@@ -13,7 +13,7 @@ export class UserRegisterComponent implements OnInit {
   password: FormControl;
   email: FormControl;
 
-  constructor(private builder: FormBuilder, private authService: AuthenticationService) {
+  constructor(private builder: FormBuilder, private authService: AuthService) {
     this.username = new FormControl('', []);
     this.password = new FormControl('', []);
     this.email = new FormControl('', []);

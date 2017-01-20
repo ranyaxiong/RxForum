@@ -19,6 +19,12 @@ class CommentList(generics.ListCreateAPIView):
         print('The self.request.user is: ', self.request.user)
         serializer.save(author=self.request.user, article=post)
 '''
+    def get_query_set(self):
+        post_id = self.request.data.get('post')
+        comment_article = Post.objects.get(pk=post_id)
+        return Comment.objects.filter(article=comment_article)
+'''        
+'''
     def create(self, request):
         serializer = self.serializer_class(data=request.data)
         author_name = request.data.get('author')

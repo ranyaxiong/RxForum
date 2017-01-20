@@ -1,5 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from './comment.service';
+import { Http } from '@angular/http';
+import { NgForm } from '@angular/forms';
+import {Configuration } from '../app.constants';
+import { AuthHttp } from 'angular2-jwt';
+
 
 @Component({
   selector: 'app-comment',
@@ -9,10 +14,25 @@ import { CommentService } from './comment.service';
 export class CommentComponent implements OnInit {
   @Input() post: any;
   comments: any[];
-  constructor(private c: CommentService) { }
+  actionUrl: string;
+  constructor(private c: CommentService, private authHttp: AuthHttp, private configuration: Configuration) {
+    this.actionUrl = configuration.API_URL + 'comments/';
+   }
 
   ngOnInit() {
-    this.c.getAllByPost(this.post.id).subscribe(comments => this.comments = comments);
+//    this.c.getAllByPost(this.post.id).subscribe(comments => this.comments = comments);
+    this.comments = this.post.comments;
+    console.log('The comments now is: ', this.comments);
   }
+  addComment(form: NgForm) {
+    console.log(form.value);
+    let data = Object.assign(form.value, {post: this.post.id});
+    console.log(data);
+     this.authHttp.post(this.actionUrl, data)
+     .map(res => res.json()).subscribe(comment => { console.log(comment); this.comments.push(comment); });
+
+  }
+
+
 
 }
