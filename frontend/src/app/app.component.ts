@@ -9,4 +9,7 @@ import { AuthService } from './auth.service';
 })
 export class AppComponent {
   constructor(private auth: AuthService) {}
+  logout() {
+    this.auth.logout();
+  }
 }
