@@ -27,6 +27,7 @@ import { AppRoutingModule } from './app-routing.moudule';
 import { CommentComponent } from './comment/comment.component';
 import { CommentService } from './comment/comment.service';
 import { AddCommentComponent } from './post/post-detail/add-comment/add-comment.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 // import { MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS } from 'ng2-material/';
 
@@ -52,6 +53,7 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     HomeComponent,
     CommentComponent,
     AddCommentComponent,
+    UserProfileComponent,
      ],
   imports: [
     BrowserModule,

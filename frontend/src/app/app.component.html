@@ -46,7 +46,7 @@
       <i class="dropdown icon"></i>
       <div class="menu">
         <div class="item">
-          Jenny Hess
+          <a href="#" onclick="logout()">退出登录</a>
         </div>
       </div>
   </div>
@@ -69,8 +69,10 @@
     <i class="dropdown icon"></i>
     <div class="menu">
       <div class="item">
-        <img class="ui avatar image" src="../assets/images/avatar/small/TomAtwork.png">
-        Tom
+        <button class="say" (click)="logout()">退出登录</button>
+      </div>
+      <div class="item">
+        <a routerLink='/user-profile'>个人档案</a>
       </div>
     </div>
   </div>

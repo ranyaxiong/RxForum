@@ -6,6 +6,7 @@ import { PostListComponent } from './post/post-list/post-list.component';
 
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { AddPostComponent } from './post/add-post/add-post.component';
 
 import { HomeComponent } from './home/home.component';
@@ -21,6 +22,7 @@ const appRoutes: Routes = [
   { path: 'post-detail/:id', component: PostDetailComponent },
   { path: 'register', component: UserRegisterComponent },
   { path: 'login', component: UserLoginComponent },
+  { path: 'user-profile', component: UserProfileComponent},
   { path: 'add-post', component: AddPostComponent, canActivate: [AuthGuardService]},
 
 ];
