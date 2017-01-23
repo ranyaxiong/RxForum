@@ -46,6 +46,6 @@ export class AuthService {
     return tokenNotExpired();
   }
   update(data) {
-    this.authHttp.put(this.actionUrl + 'users/', data);
+    return this.authHttp.put(this.configuration.API_URL + 'profiles/', data);
   }
 }

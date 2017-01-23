@@ -2,8 +2,17 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
+class UserProfile(models.Model):
+    address = models.CharField(max_length=60)
+
+
 class User(AbstractUser):
     tagline = models.CharField(max_length=120)
+    profile = models.OneToOneField(
+            UserProfile,
+            on_delete = models.CASCADE,
+            null = True,
+            )
 
 
 class Post(models.Model):

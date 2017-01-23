@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from forum.models import Post, User, Comment
+from forum.models import Post, User, Comment, UserProfile
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -24,7 +24,14 @@ class PostSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'content', 'author', 'comments')
 
 
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = ('id', 'address')
+
+
 class UserSerializer(serializers.ModelSerializer):
+#    profile = UserProfileSerializer()
     posts = serializers.PrimaryKeyRelatedField(
         many=True,
         queryset=Post.objects.all(),

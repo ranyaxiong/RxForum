@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from forum.models import Post, User, Comment
 from forum.serializers import PostSerializer, UserSerializer, CommentSerializer
 from rest_framework import generics, status, views
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 #from rest_framework.authentication import SessionAuthentication, BasicAuthentication
@@ -86,9 +87,26 @@ class UserList(generics.ListCreateAPIView):
                 }, status=status.HTTP_400_BAD_REQUEST)
 
 
+
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+class UserProfile(APIView):
+    def put(self, request):
+        user = request.user
+        serializer = UserSerializer(user, data=request.data)
+        print('what the request data now: ' , request.data, request.data.get('password'))
+        if serializer.is_valid():
+            username = request.data.get('username')
+            password = request.data.get('password')
+            email = request.data.get('email')
+            user.username = username
+            user.set_password(password)
+            user.email = email
+            user.save()
+            return Response(serializer.data)
 
 
 class LoginView(views.APIView):
