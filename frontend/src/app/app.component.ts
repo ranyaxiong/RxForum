@@ -12,10 +12,10 @@ declare var $: any;
 export class AppComponent implements AfterViewInit {
   constructor(private auth: AuthService, private router: Router) {}
   ngAfterViewInit() {
-   // $('.ui.dropdown').dropdown();
+    $('.ui.dropdown').dropdown();
   }
   logout() {
     this.auth.logout();
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 }
