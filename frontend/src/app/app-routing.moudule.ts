@@ -15,8 +15,8 @@ import { AuthGuardService } from './auth-guard.service';
 
 
 const appRoutes: Routes = [
- // { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
 //  { path: 'post-list', component: PostListComponent, outlet: 'postList' },
   { path: 'post-list', component: PostListComponent, outlet: 'postList' },
   { path: 'post-detail/:id', component: PostDetailComponent },

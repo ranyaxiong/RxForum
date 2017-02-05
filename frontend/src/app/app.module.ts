@@ -28,6 +28,9 @@ import { CommentComponent } from './comment/comment.component';
 import { CommentService } from './comment/comment.service';
 import { AddCommentComponent } from './post/post-detail/add-comment/add-comment.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MainComponent } from './main/main.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 // import { MATERIAL_DIRECTIVES, MATERIAL_PROVIDERS } from 'ng2-material/';
 
@@ -54,6 +57,9 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
     CommentComponent,
     AddCommentComponent,
     UserProfileComponent,
+    NavbarComponent,
+    MainComponent,
+    SidebarComponent,
      ],
   imports: [
     BrowserModule,

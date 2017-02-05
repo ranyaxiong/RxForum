@@ -32,7 +32,7 @@ export class UserLoginComponent implements OnInit {
     let ok = this.authService.login(this.loginForm.value);
     console.log(ok);
     if (localStorage.getItem('id_token')) {
-      this.router.navigate(['']);
+      this.router.navigate(['/home']);
     }
   //  ok.subscribe(data => console.log(data));
   }
