@@ -26,6 +26,7 @@ export class AuthService {
     // return this.authHttp.post(this.API_URL + '/login/', data).map(res => res.json());
      return this.http.post(this.actionUrl, data)
     .subscribe((response: Response) => {
+      console.log('the response is: ', response.json());
       let token = response.json() && response.json().token;
       console.log('map is called, the token value now is:', token);
       if (token) {
