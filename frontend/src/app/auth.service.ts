@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { Configuration } from './app.constants';
 
@@ -11,7 +12,7 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class AuthService {
   private actionUrl: string;
-  constructor(private authHttp: AuthHttp, private http: Http, private configuration: Configuration  ) {
+  constructor(private authHttp: AuthHttp, private http: Http, private configuration: Configuration, private router: Router  ) {
         this.actionUrl = configuration.AUTH_URL;
   }
 
@@ -20,20 +21,13 @@ export class AuthService {
   }
 
   login(data) {
-    // data = JSON.stringify(data);
-    // this.testGetToken(data);
-   //  console.log(this.getAuthToken(data));
-    // return this.authHttp.post(this.API_URL + '/login/', data).map(res => res.json());
-     return this.http.post(this.actionUrl, data)
+     this.http.post(this.actionUrl, data)
     .subscribe((response: Response) => {
-      console.log('the response is: ', response.json());
       let token = response.json() && response.json().token;
-      console.log('map is called, the token value now is:', token);
       if (token) {
-        console.log(token);
         localStorage.setItem('id_token', token);
         localStorage.setItem('currentUser', data.username);
-        console.log('get token success');
+        this.router.navigateByUrl('/home');
       } else {
         console.log('get token failed');
       }
