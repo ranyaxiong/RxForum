@@ -1,5 +1,5 @@
 <!-- <button class="positive ui button" routerLink='/add-post' style="float: right;">发表新文章</button> -->
-<div class="ui grid container" style="padding-left:6px; background-color: #FFF;">
+<div class="ui grid container" style="padding-left:6px; background-color: #FFF; margin-top:5px;">
   <div *ngFor="let post of postList" class="row">
     <a [routerLink]="['/post-detail', post.id]"><h3 class="ui green block header">{{ post.title }}</h3></a>
     &nbsp; &nbsp; &nbsp; &nbsp;
