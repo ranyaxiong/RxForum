@@ -9,7 +9,7 @@ declare var $: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   currentUser: string;
   constructor(private auth: AuthService, private router: Router) {}
   ngAfterViewInit() {

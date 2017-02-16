@@ -28,13 +28,7 @@ export class UserLoginComponent implements OnInit {
   ngOnInit() {
   }
   login() {
-    console.log(this.loginForm.value);
     this.authService.login(this.loginForm.value);
-  //  if (localStorage.getItem('id_token')) {
-   //   console.log('login function, if is ok');
-     // this.router.navigate(['/home']);
-   // }
-  //  ok.subscribe(data => console.log(data));
   }
 
 }
