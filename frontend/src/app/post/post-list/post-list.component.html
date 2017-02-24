@@ -3,6 +3,6 @@
   <div *ngFor="let post of postList" class="row">
     <a [routerLink]="['/post-detail', post.id]"><h3 class="ui green block header">{{ post.title }}</h3></a>
     &nbsp; &nbsp; &nbsp; &nbsp;
-    <p style="float: right; font-size: 20px;">{{ post.author }}<p>
+    <p style="float: right; font-size: 20px; color: aqua">{{ post.author }}<p>
   </div>
 </div>
