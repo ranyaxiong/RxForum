@@ -1,8 +1,12 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-  <label for="username">username</label>
-  <input type="text" name="username" id="username" [formControl]="username">
-
-  <label for="password">password</label>
-  <input type="password" name="password" id="password" [formControl]="password">
-  <button type="submit">login</button>
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="ui form" style="padding-left: 200px;">
+  <div class="field">
+    <label>用户名</label>
+    <input type="text" name="username" id="username" style="width: 60%" [formControl]="username" placeholder="please input your username">
+  </div>
+  <div class="field">
+    <label>密码</label>
+    <input type="password" name="password" id="password" style="width: 60%" [formControl]="password" placeholder="input your password">
+  </div>
+  <button class="ui button" type="submit">登录</button>
 </form>
+
