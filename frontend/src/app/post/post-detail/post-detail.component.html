@@ -1,12 +1,42 @@
 <div class="ui grid container">
   <div class="twelve wide column">
-    <div *ngIf="post" class="ui segment">
-      <h3>{{ post.title }}</h3>
-      <div class="meta-info" style="font-size:13px; color: #838383;">
-        发布于20天前&nbsp;作者&nbsp;763次浏览&nbsp;60回复
-        <div class="ui divider"></div>
-        {{ post.content }}  
+    <div class="ui grid container">
+      <div class="row">
+        <div *ngIf="post" class="post-main">
+          <div class="topic-header">
+            <span class="topic-full-title"></span>
+            <div class="change">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>  
+            </div>  
+          </div> 
+          <div class="inner-topic">
+            <div class="topic-content">
+              <div class="markdown-text">
+                <p>today is sunday</p>
+              </div>
+            </div>
+          </div> 
+          
+        </div>
       </div>
+      <div class="row">
+        <div class="ui segment">
+          day and night
+        </div>
+      </div>
+    </div>
+   
+  </div>
+  <div class="four wide column">
+    <p>someday</p>
+  </div>
+  <div class="row">
+    <div class="ui segment">
+      <p>hello tom</p>
     </div>
   </div>
 </div>
