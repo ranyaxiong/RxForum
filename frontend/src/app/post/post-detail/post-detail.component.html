@@ -1,6 +1,12 @@
-<div *ngIf="post" class="ui container">
-  <h3>{{ post.title }}</h3>
-  {{ post.content }}
-  <br>
- <app-comment [post]="post"></app-comment>
+<div class="ui grid container">
+  <div class="twelve wide column">
+    <div *ngIf="post" class="ui segment">
+      <h3>{{ post.title }}</h3>
+      <div class="meta-info" style="font-size:13px; color: #838383;">
+        发布于20天前&nbsp;作者&nbsp;763次浏览&nbsp;60回复
+        <div class="ui divider"></div>
+        {{ post.content }}  
+      </div>
+    </div>
+  </div>
 </div>
