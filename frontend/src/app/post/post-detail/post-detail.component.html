@@ -2,13 +2,13 @@
   <div class="twelve wide column">
     <div class="ui grid container">
       <div class="row">
-        <div *ngIf="post" class="post-main">
+        <div *ngIf="post" class="post-main" style="width: 100%;">
           <div class="topic-header">
-            <span class="topic-full-title"></span>
+            <span class="topic-full-title">{{ post.title }}</span>
             <div class="change">
-              <span></span>
-              <span></span>
-              <span></span>
+              <span>10 hours ago &middot;</span>
+              <span>jerry &middot;</span>
+              <span>73 clicks &middot;</span>
               <span></span>
               <span></span>  
             </div>  
@@ -23,20 +23,15 @@
           
         </div>
       </div>
-      <div class="row">
-        <div class="ui segment">
-          day and night
-        </div>
+      <div *ngIf="auth.authenticated()">
+        
       </div>
+      <div class="row">
+        <app-comment [post]="post"></app-comment>
+      </div>
+     
     </div>
    
   </div>
-  <div class="four wide column">
-    <p>someday</p>
-  </div>
-  <div class="row">
-    <div class="ui segment">
-      <p>hello tom</p>
-    </div>
-  </div>
+  
 </div>

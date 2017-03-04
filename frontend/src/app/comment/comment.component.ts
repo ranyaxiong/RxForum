@@ -21,7 +21,10 @@ export class CommentComponent implements OnInit {
 
   ngOnInit() {
 //    this.c.getAllByPost(this.post.id).subscribe(comments => this.comments = comments);
-    this.comments = this.post.comments;
+      this.comments = this.post && this.post.comments || [];
+
+    //this.comments = this.post.comments || null;
+    console.log(this.comments, this.post);
     console.log('The comments now is: ', this.comments);
   }
   addComment(form: NgForm) {
