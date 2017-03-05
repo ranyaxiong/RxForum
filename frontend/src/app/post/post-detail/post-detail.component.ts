@@ -20,8 +20,8 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params
-    .switchMap((params: Params) => this.p.getPost(+params['id']))
-    .subscribe(post => {this.post = post; console.log(this.post); });
+    .switchMap((params: Params) => this.p.getPost(+params['postId']))
+    .subscribe(post => {this.post = post; console.log("after ngoninit, the post now: ", this.post); });
        }
 
 }

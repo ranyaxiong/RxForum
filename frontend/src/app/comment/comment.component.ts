@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from './comment.service';
 import { Http } from '@angular/http';
+import { ActivatedRoute, Params } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import {Configuration } from '../app.constants';
 import { AuthHttp } from 'angular2-jwt';
@@ -15,13 +16,16 @@ export class CommentComponent implements OnInit {
   @Input() post: any;
   comments: any[];
   actionUrl: string;
-  constructor(private c: CommentService, private authHttp: AuthHttp, private configuration: Configuration) {
+  constructor(private c: CommentService, private authHttp: AuthHttp, private configuration: Configuration,
+              private route: ActivatedRoute) {
     this.actionUrl = configuration.API_URL + 'comments/';
    }
 
   ngOnInit() {
-//    this.c.getAllByPost(this.post.id).subscribe(comments => this.comments = comments);
-      this.comments = this.post && this.post.comments || [];
+      this.route.params.switchMap((params: Params) => this.c.getAllByPost(+params['postId']))
+      .subscribe(post => this.comments = post.comments);
+     
+      //this.comments = this.post && this.post.comments || [];
 
     //this.comments = this.post.comments || null;
     console.log(this.comments, this.post);

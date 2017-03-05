@@ -19,7 +19,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
 //  { path: 'post-list', component: PostListComponent, outlet: 'postList' },
   { path: 'post-list', component: PostListComponent, outlet: 'postList' },
-  { path: 'post-detail/:id', component: PostDetailComponent },
+  { path: 'post-detail/:postId', component: PostDetailComponent },
   { path: 'register', component: UserRegisterComponent },
   { path: 'login', component: UserLoginComponent },
   { path: 'user-profile', component: UserProfileComponent},
