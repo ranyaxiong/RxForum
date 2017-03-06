@@ -5,6 +5,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import {Configuration } from '../app.constants';
 import { AuthHttp } from 'angular2-jwt';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class CommentComponent implements OnInit {
   comments: any[];
   actionUrl: string;
   constructor(private c: CommentService, private authHttp: AuthHttp, private configuration: Configuration,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute, private auth: AuthService) {
     this.actionUrl = configuration.API_URL + 'comments/';
    }
 
