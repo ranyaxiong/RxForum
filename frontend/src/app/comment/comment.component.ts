@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from './comment.service';
-import { Http } from '@angular/http';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import {Configuration } from '../app.constants';
@@ -25,10 +24,7 @@ export class CommentComponent implements OnInit {
   ngOnInit() {
       this.route.params.switchMap((params: Params) => this.c.getAllByPost(+params['postId']))
       .subscribe(post => this.comments = post.comments);
-     
-      //this.comments = this.post && this.post.comments || [];
 
-    //this.comments = this.post.comments || null;
     console.log(this.comments, this.post);
     console.log('The comments now is: ', this.comments);
   }

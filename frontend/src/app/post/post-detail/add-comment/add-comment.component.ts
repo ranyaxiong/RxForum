@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Http } from '@angular/http';
 import { NgForm } from '@angular/forms';
 import {Configuration } from '../../../app.constants';
 import { AuthHttp } from 'angular2-jwt';
