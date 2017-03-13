@@ -1,9 +1,11 @@
-<div class="ui grid container" style="border: 1px solid #e5e5e5; border-radius: 3px 3px 0 0;">
-  <div class="row">
-    <div class="ui top attached label">10回复</div>
-  </div>
-  <div *ngFor="let comment of comments" class="comment row">
+<!--
+<div class="comments" style="border: 1px solid #e5e5e5; border-radius: 3px 3px 0 0;">
+  <div class="label"> -->
+  <div class="ui top attached label">10回复</div>
+  
+  <div *ngFor="let comment of comments" class="comment">
     {{ comment.author }}&nbsp;&nbsp;&nbsp; 15&nbsp;小时&nbsp;59分钟前
+    <br>
     <p>{{ comment.content }}</p>
   </div>
   <div *ngIf="auth.authenticated()">
@@ -15,4 +17,3 @@
   
   </form>
   </div>
-</div>
