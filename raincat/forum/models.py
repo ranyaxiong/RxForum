@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 class UserProfile(models.Model):
     address = models.CharField(max_length=60)
+    avatar = models.ImageField(upload='pic_folder/', default='pic_folder/None/no-avatar.jpg')
 
 
 class User(AbstractUser):
